@@ -20,7 +20,8 @@ const OtpInput = ({ length, handleOtpSubmit }: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const combinedOtp = otp.join('');
-        if (combinedOtp.length === 4) handleOtpSubmit(combinedOtp);
+        if (combinedOtp.length === length) handleOtpSubmit(combinedOtp);
+
     }
 
     const handleClick = (index: number) => {
@@ -34,9 +35,9 @@ const OtpInput = ({ length, handleOtpSubmit }: Props) => {
 
 
     const handleOtpChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('index: ', index)
+        // console.log('index: ', index)
         const value = e.target.value;
-        console.log('value: ', value);
+        // console.log('value: ', value);
         if (value && isNaN(parseFloat(value))) return;      //if anything else num is entered return;
 
         const newOtp = [...otp];
@@ -78,7 +79,7 @@ const OtpInput = ({ length, handleOtpSubmit }: Props) => {
                 )
                 )}
                 </div>
-                <button className='btn' disabled={otp.join('').length !== 4} type='submit'>Continue</button>
+                <button className='btn' disabled={otp.join('').length !== length} type='submit'>Continue</button>
 
             </form>
         </div>
